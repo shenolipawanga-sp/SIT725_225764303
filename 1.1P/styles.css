@@ -1,0 +1,13 @@
+body {
+    background-color: #f4f4f4;
+}
+
+#heading {
+    color: #26a69a;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+button {
+    margin-top: 20px;
+}
