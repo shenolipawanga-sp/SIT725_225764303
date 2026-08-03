@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SIT725 3.2P - Car Showcase</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper navbar-size">
+      <a href="#!" class="brand-logo left">Car Showcase</a>
+    </div>
+  </nav>
+
+  <main class="main-body">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 center-align">
+          <h1>Welcome to the Car Showcase</h1>
+          <p class="flow-text">Built with Express and Materialize.</p>
+        </div>
+      </div>
+    <div class="row">
+      <div class="col s12 center-align">
+        <img class="materialboxed responsive-img" src="images/showroom.jpg" style="max-width:1000px; display:block; margin:0 auto;">
+      </div>
+    </div>
+      <div class="row" id="card-section">
+      </div>
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="js/scripts.js"></script>
+  <div id="carModal" class="modal">
+  <div class="modal-content">
+    <h4 id="modalTitle"></h4>
+    <img id="modalImage" class="responsive-img" style="max-width:300px;">
+    <p id="modalDescription"></p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+  </div>
+  </div>
+</body>
+</html>
