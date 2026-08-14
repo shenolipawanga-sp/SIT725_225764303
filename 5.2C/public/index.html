@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Books Catalogue</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background-color: #fafafa; color: #222; }
+    h1 { font-size: 20px; color: #333; }
+    button {
+      background-color: #2f5d62;
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      margin: 12px 0 20px;
+    }
+    button:hover { background-color: #24494c; }
+    ul { list-style: none; padding: 0; max-width: 480px; }
+    li {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+    li:hover { background: #f0f0f0; }
+    #bookDetail {
+      display: none;
+      max-width: 480px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin-top: 20px;
+    }
+    #bookDetail p { margin: 6px 0; }
+    #bookDetail span.label { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Books Catalogue developed by s225764303</h1>
+  <p>Click the button below to get all books from the server:</p>
+  <button id="getBooksBtn">Get all books</button>
+
+  <ul id="bookList"></ul>
+
+  <div id="bookDetail">
+    <p><span class="label">Title:</span> <span id="detailTitle"></span></p>
+    <p><span class="label">Author:</span> <span id="detailAuthor"></span></p>
+    <p><span class="label">Year:</span> <span id="detailYear"></span></p>
+    <p><span class="label">Genre:</span> <span id="detailGenre"></span></p>
+    <p><span class="label">Summary:</span> <span id="detailSummary"></span></p>
+    <p><span class="label">Price (AUD):</span> <span id="detailPrice"></span></p>
+  </div>
+
+  <script>
+    const getBooksBtn = document.getElementById('getBooksBtn');
+    const bookList = document.getElementById('bookList');
+    const bookDetail = document.getElementById('bookDetail');
+
+    getBooksBtn.addEventListener('click', () => {
+      fetch('/api/books')
+        .then((res) => res.json())
+        .then((result) => {
+          const books = result.data;
+          bookList.innerHTML = '';
+          bookDetail.style.display = 'none';
+
+          books.forEach((book) => {
+            const item = document.createElement('li');
+            item.textContent = `${book.title} ${book.price} AUD`;
+            item.addEventListener('click', () => showBookDetail(book._id));
+            bookList.appendChild(item);
+          });
+        })
+        .catch((err) => console.error('Error fetching books:', err));
+    });
+
+    function showBookDetail(id) {
+      fetch(`/api/books/${id}`)
+        .then((res) => res.json())
+        .then((result) => {
+          const book = result.data;
+          document.getElementById('detailTitle').textContent = book.title;
+          document.getElementById('detailAuthor').textContent = book.author;
+          document.getElementById('detailYear').textContent = book.year;
+          document.getElementById('detailGenre').textContent = book.genre;
+          document.getElementById('detailSummary').textContent = book.summary;
+          document.getElementById('detailPrice').textContent = book.price;
+          bookDetail.style.display = 'block';
+        })
+        .catch((err) => console.error('Error fetching book:', err));
+    }
+  </script>
+</body>
+</html>
