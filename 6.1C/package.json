@@ -1,0 +1,22 @@
+{
+  "name": "6.1C",
+  "version": "1.0.0",
+  "description": "SIT725 6.1C",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha test --exit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "mocha": "^10.7.3",
+    "chai": "^4.5.0",
+    "chai-http": "^4.4.0"
+  }
+}
