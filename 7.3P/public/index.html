@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SIT725 7.3P - Live To-Do List</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper navbar-size">
+      <a href="#!" class="brand-logo left">&nbsp;&nbsp;Live To-Do List</a>
+      <ul class="right">
+        <li><span id="userCount" class="chip user-chip">0 users online</span></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main-body">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 center-align">
+          <h4>A shared to-do list, updated live</h4>
+          <p class="flow-text">Open this page in a second tab or browser - anything you add, tick, or delete shows up there instantly.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12 m8 offset-m2">
+          <div class="input-field">
+            <input id="itemInput" type="text" maxlength="100" placeholder="e.g. Finish SIT725 report">
+            <label for="itemInput" class="active">New task</label>
+          </div>
+          <button id="addBtn" class="btn waves-effect waves-light teal">
+            Add Task
+            <i class="material-icons right">add</i>
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12 m8 offset-m2">
+          <ul id="todoList" class="collection">
+            <li class="collection-item grey-text">No tasks yet</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Load socket.io before scripts.js -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+</html>
