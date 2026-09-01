@@ -1,0 +1,46 @@
+.navbar-size {
+  height: 64px;
+  line-height: 64px;
+}
+
+.user-chip {
+  margin-top: 16px;
+  background-color: #ffffff;
+  color: #EE6F73;
+  font-weight: 500;
+}
+
+.main-body {
+  padding-top: 20px;
+}
+
+.todo-row {
+  display: flex;
+  align-items: center;
+}
+
+.todo-checkbox {
+  position: static;
+  opacity: 1;
+  pointer-events: auto;
+  width: 22px;
+  height: 22px;
+  margin-right: 14px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.todo-label {
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+.done-text {
+  text-decoration: line-through;
+  color: #49d059;
+}
+
+.delete-icon {
+  color: #e57373;
+  cursor: pointer;
+}
