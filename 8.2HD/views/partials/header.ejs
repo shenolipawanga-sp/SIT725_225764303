@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Study Buddy AI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <nav class="teal darken-2">
+    <div class="nav-wrapper container">
+      <a href="/" class="brand-logo">Study Buddy AI</a>
+      <ul class="right">
+        <% if (typeof user !== 'undefined' && user) { %>
+          <li><a href="/dashboard">Dashboard</a></li>
+          <li><a href="/subjects">Subjects</a></li>
+          <li>
+            <form action="/auth/logout" method="POST" style="display:inline">
+              <button type="submit" class="btn-flat white-text">Log out</button>
+            </form>
+          </li>
+        <% } else { %>
+          <li><a href="/auth/login">Sign in</a></li>
+          <li><a href="/auth/register">Register</a></li>
+        <% } %>
+      </ul>
+    </div>
+  </nav>
+  <main class="container" style="margin-top: 2rem;">

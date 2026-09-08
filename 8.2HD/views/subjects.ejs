@@ -1,0 +1,65 @@
+<%- include('partials/header') %>
+
+<h4>Subjects</h4>
+
+<% if (error) { %>
+  <div class="card-panel red lighten-4 red-text text-darken-4"><%= error %></div>
+<% } %>
+
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">Add a subject</span>
+    <form action="/subjects" method="POST">
+      <div class="row">
+        <div class="input-field col s12 m3">
+          <input id="code" name="code" type="text" required>
+          <label for="code">Unit code</label>
+        </div>
+        <div class="input-field col s12 m5">
+          <input id="name" name="name" type="text" required>
+          <label for="name">Unit name</label>
+        </div>
+        <div class="input-field col s6 m2">
+          <input id="weeklyHours" name="weeklyHours" type="number" min="1" max="40" value="6" required>
+          <label for="weeklyHours">Hours/week</label>
+        </div>
+        <div class="input-field col s6 m2">
+          <select name="difficulty">
+            <option value="easy">Easy</option>
+            <option value="moderate" selected>Moderate</option>
+            <option value="hard">Hard</option>
+          </select>
+          <label>Difficulty</label>
+        </div>
+      </div>
+      <button class="btn teal darken-2" type="submit">Add subject</button>
+    </form>
+  </div>
+</div>
+
+<% if (subjects.length === 0) { %>
+  <p class="grey-text">Nothing saved yet.</p>
+<% } else { %>
+  <table class="striped">
+    <thead>
+      <tr><th>Code</th><th>Name</th><th>Hours/week</th><th>Difficulty</th><th></th></tr>
+    </thead>
+    <tbody>
+      <% subjects.forEach(function (s) { %>
+        <tr>
+          <td><%= s.code %></td>
+          <td><%= s.name %></td>
+          <td><%= s.weeklyHours %></td>
+          <td><%= s.difficulty %></td>
+          <td>
+            <form action="/subjects/<%= s._id %>/delete" method="POST">
+              <button class="btn-small red lighten-1" type="submit">Remove</button>
+            </form>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+<% } %>
+
+<%- include('partials/footer') %>

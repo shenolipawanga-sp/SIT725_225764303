@@ -1,0 +1,39 @@
+<%- include('partials/header') %>
+
+<h4>Welcome back, <%= user.email %></h4>
+<p class="grey-text">Signed in as a <%= user.role %>.</p>
+
+<div class="row">
+  <div class="col s12 m6">
+    <div class="card teal lighten-5">
+      <div class="card-content">
+        <span class="card-title"><%= subjectCount %></span>
+        <p>subjects enrolled</p>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m6">
+    <div class="card teal lighten-5">
+      <div class="card-content">
+        <span class="card-title"><%= totalHours %></span>
+        <p>study hours planned per week</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if (subjects.length === 0) { %>
+  <p>No subjects yet. <a href="/subjects">Add your first one</a>.</p>
+<% } else { %>
+  <ul class="collection with-header">
+    <li class="collection-header"><h5>Your subjects</h5></li>
+    <% subjects.forEach(function (s) { %>
+      <li class="collection-item">
+        <strong><%= s.code %></strong> <%= s.name %>
+        <span class="secondary-content"><%= s.weeklyHours %> h/week</span>
+      </li>
+    <% }); %>
+  </ul>
+<% } %>
+
+<%- include('partials/footer') %>
